@@ -29769,7 +29769,9 @@ var ts;
             }
             var diagnostic;
             if (hasExtension(fileName)) {
-                if (!options.allowNonTsExtensions && !ts.fileExtensionIs(host.getCanonicalFileName(fileName), ".ts")) {
+                if (!options.allowNonTsExtensions &&
+                    (!ts.fileExtensionIs(host.getCanonicalFileName(fileName), ".ts") &&
+                        !ts.fileExtensionIs(host.getCanonicalFileName(fileName), ".js"))) {
                     diagnostic = ts.Diagnostics.File_0_must_have_extension_ts_or_d_ts;
                 }
                 else if (!findSourceFile(fileName, isDefaultLib, refFile, refPos, refEnd)) {
