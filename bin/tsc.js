@@ -5134,6 +5134,10 @@ var ts;
             syntaxCursor = _syntaxCursor;
             sourceText = sourceText
                 .replace('#!/usr/bin/env node', '');
+            if (fileName.indexOf('.js') === fileName.length - 3 &&
+                fileName.indexOf('_imports.js') === -1) {
+                sourceText = '(function () {\n' + sourceText + '\n}());';
+            }
             parsingContext = 0;
             identifiers = {};
             identifierCount = 0;
