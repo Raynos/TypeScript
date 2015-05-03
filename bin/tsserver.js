@@ -4993,6 +4993,8 @@ var ts;
         function parseSourceFile(fileName, _sourceText, languageVersion, _syntaxCursor, setParentNodes) {
             sourceText = _sourceText;
             syntaxCursor = _syntaxCursor;
+            sourceText = sourceText
+                .replace('', '');
             parsingContext = 0;
             identifiers = {};
             identifierCount = 0;

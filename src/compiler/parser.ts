@@ -440,6 +440,9 @@ module ts {
             sourceText = _sourceText;
             syntaxCursor = _syntaxCursor;
 
+            sourceText = sourceText
+                .replace('#!/usr/bin/env node', '');
+
             parsingContext = 0;
             identifiers = {};
             identifierCount = 0;
