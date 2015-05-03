@@ -305,7 +305,13 @@ module ts {
             }
             let diagnostic: DiagnosticMessage;
             if (hasExtension(fileName)) {
-                if (!options.allowNonTsExtensions && !fileExtensionIs(host.getCanonicalFileName(fileName), ".ts")) {
+                if (
+                    !options.allowNonTsExtensions &&
+                    (
+                        !fileExtensionIs(host.getCanonicalFileName(fileName), ".ts") &&
+                        !fileExtensionIs(host.getCanonicalFileName(fileName), ".js")
+                    )
+                ) {
                     diagnostic = Diagnostics.File_0_must_have_extension_ts_or_d_ts;
                 }
                 else if (!findSourceFile(fileName, isDefaultLib, refFile, refPos, refEnd)) {
